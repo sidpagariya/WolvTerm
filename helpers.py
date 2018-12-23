@@ -15,8 +15,12 @@ def pressEnterId(id):
     elem = driver.find_element_by_id(id)
     elem.send_keys(Keys.RETURN)
 
-def enterLogin():
-    navTo('https://csprod.dsc.umich.edu/services/student')
+def enterLogin(isEmpl):
+    if isEmpl:
+        navTo('https://weblogin.umich.edu/?cosign-hcmprod.dsc&https://hcmprod.dsc.umich.edu/services/employee/')
+    else:
+        navTo('https://weblogin.umich.edu/?cosign-csprod.dsc&https://csprod.dsc.umich.edu/services/student/')
+
     if "Weblogin" in driver.title:
         try:
             usr = '***REMOVED***'
@@ -58,14 +62,15 @@ def quitSess():
     writeCookies()
     driver.close()
     driver.quit()
+    exit()
 
-def handleLogin(func, args=None):
+def handleLogin(func, args=None, isEmpl=False):
     if args:
         func(args)
     else:
         func()
     if 'Weblogin' in driver.title:
-        enterLogin()
+        enterLogin(isEmpl)
         if args:
             func(args)
         else:

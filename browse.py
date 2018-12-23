@@ -32,12 +32,11 @@ def exec_menu(choice):
 
 def exitSess():
     quitSess()
-    exit()
 
 menu_actions = {
     'main_menu': main_menu,
     '1': Home,
-    '2': Student,
+    '2': StudentCenter,
     '3': EmployeeSelfService,
     '0': exitSess
 }
@@ -45,6 +44,7 @@ menu_actions = {
 if __name__ == "__main__":
     Home()
     readCookies()
+    Home()
     main_menu()
     # Home()
     #StudentCenter()
