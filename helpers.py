@@ -23,8 +23,8 @@ def enterLogin(isEmpl):
 
     if "Weblogin" in driver.title:
         try:
-            usr = '***REMOVED***'
-            password = '***REMOVED***'
+            usr = getpass('Enter username: ')
+            password = getpass('Enter password: ')
             enterTextId('login', usr)
             enterTextId('password', password)
             pressEnterId('password')
